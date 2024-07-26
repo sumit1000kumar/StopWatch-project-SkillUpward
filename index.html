@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StopWatch</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <h1><a href="/index.html">StopWatch.in</a></h1>
+            <ul>
+                <li><a href="">About</a></li>
+                <li><a href="">Stopwatch</a></li>
+                <li><a href="">Timer</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section class="stopwatchSection">
+            <div class="stopwatchpart">
+                <h2>StopWatch</h2>
+                <p><span id="days">00</span> : <span id="hour">00</span> : <span id="minutes">00</span> : <span id="seconds">00</span></p>
+                <div class="btn">
+                    <button id="start">Start</button>
+                    <button id="stop">Stop</button>
+                    <button id="reset">Reset</button>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+</body>
+
+<script>
+    let timer;
+        let startTime;
+        let elapsedTime = 0;
+        let running = false;
+
+        const daysElement = document.getElementById('days');
+        const hoursElement = document.getElementById('hour');
+        const minutesElement = document.getElementById('minutes');
+        const secondsElement = document.getElementById('seconds');
+        const startButton = document.getElementById('start');
+        const stopButton = document.getElementById('stop');
+        const resetButton = document.getElementById('reset');
+
+        startButton.addEventListener('click', startTimer);
+        stopButton.addEventListener('click', stopTimer);
+        resetButton.addEventListener('click', resetTimer);
+
+        function startTimer() {
+            if (!running) {
+                running = true;
+                startTime = Date.now() - elapsedTime;
+                timer = setInterval(updateTime, 1000);
+            }
+        }
+
+        function stopTimer() {
+            if (running) {
+                running = false;
+                elapsedTime = Date.now() - startTime;
+                clearInterval(timer);
+            }
+        }
+
+        function resetTimer() {
+            running = false;
+            clearInterval(timer);
+            elapsedTime = 0;
+            updateDisplay(0, 0, 0, 0);
+        }
+
+        function updateTime() {
+            elapsedTime = Date.now() - startTime;
+
+            const totalSeconds = Math.floor(elapsedTime / 1000);
+            const days = Math.floor(totalSeconds / 86400);
+            const hours = Math.floor((totalSeconds % 86400) / 3600);
+            const minutes = Math.floor((totalSeconds % 3600) / 60);
+            const seconds = totalSeconds % 60;
+
+            updateDisplay(days, hours, minutes, seconds);
+        }
+
+        function updateDisplay(days, hours, minutes, seconds) {
+            daysElement.textContent = String(days).padStart(2, '0');
+            hoursElement.textContent = String(hours).padStart(2, '0');
+            minutesElement.textContent = String(minutes).padStart(2, '0');
+            secondsElement.textContent = String(seconds).padStart(2, '0');
+        }
+</script>
+</html>

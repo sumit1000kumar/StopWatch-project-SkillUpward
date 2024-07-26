@@ -1,0 +1,133 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body, html{
+    height: 100%;
+    width: 100%;
+    background-color: #ccebe9;
+}
+
+nav{
+    height: 10vh;
+    background-color: white;
+    margin: 2vh;
+    padding: 0 2vw;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px;
+}
+
+nav h1{
+    font-size: 2vw;
+    font-weight: bold;
+}
+
+nav h1 a{
+    text-decoration: none;
+    color: #1d7a63;
+}
+
+nav ul{
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    gap: 2vw;
+}
+
+nav ul li a{
+    text-decoration: none;
+    color: black;
+    padding-bottom: 1vh;
+}
+
+nav ul li a:hover{
+    color: #1d7a63;
+    font-weight: 600;
+    border-bottom: 2px solid red;
+}
+
+@media (max-width:765px){
+    nav{
+        padding: 0 5vw;
+    }
+
+    nav h1{
+        font-size: 5vw;
+    }
+
+    nav ul li{
+        font-size: 3vw;
+    }
+}
+.stopwatchSection{
+    height: 80vh;
+    /* background-color: #fefefe; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.stopwatchpart{
+    background-color: #1d7a63;
+    padding: 3vw 5vw;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    gap: 2vw;
+}
+
+.stopwatchpart h2{
+    font-size: 3vw;
+    color: white;
+    text-transform: uppercase;
+}
+
+.stopwatchpart p{
+    font-size: 2vw;
+    color: white;
+}
+.btn button{
+    background-color: #ccebe9;
+    border-radius: 20px;
+    padding: 1.5vh 2vh;
+    border: 1px solid white;
+    margin: 1vw;
+    font-weight: 600;
+}
+
+@media (max-width:765px) {
+    .stopwatchpart{
+        padding: 10vw 10vw;
+        border-radius: 10px;
+        gap: 3vw;
+    }
+
+    .stopwatchpart h2{
+        font-size: 7vw;
+    }
+
+    .stopwatchpart p{
+        font-size: 5vw;
+        color: #fefefe;
+    }
+
+    .stopwatchpart button{
+        font-size: 3vw;
+        padding: 1vh 4vw;
+    }
+
+
+}
+
+.btn button:hover{
+    background-color: white;
+    border: 2px  dotted red;
+    color: black;
+}
